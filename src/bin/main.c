@@ -3,14 +3,13 @@
 
 ////PID straight test v1
 task main(){
-   float distance = 3000; //mm
-//    float angle = 40; //degrees
-//    zeroTurn(angle);
-//    motor[motorA] = 0;
-//    motor[motorB] = 0;
-//    displayString(1, "%f", nImmediateBatteryLevel);
-//    wait1Msec(1000);
-//    //straight(distance);
-    float speed = batToVel(nImmediateBatteryLevel);
-    straight(distance, speed);
+    float pow = 50;
+    //straight(609.6, pow);
+    bFloatDuringInactiveMotorPWM = true;
+    zeroTurn(30, pow/2);
+    bFloatDuringInactiveMotorPWM = false;
+    motor[motorA] = 0;
+    motor[motorB] = 0;
+    wait1Msec(500);
+    bFloatDuringInactiveMotorPWM = true;
 }
