@@ -1,11 +1,3 @@
-// Reed
-//AJ
-////encoder test
-//// frank delgadillo 
-
-=======
-// Steve is the best
->>>>>>> origin/master
 #include "motion.h"
 task main() {
 

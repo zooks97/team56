@@ -20,7 +20,7 @@
  * comment heavily
 */
 
-#define RWHL 56 //mm
+#define RWHL 40.8 //mm
 #define RRBT 85 //mm
 #define DEGMM (4.3/3.0) //degrees per mm
 #define BASESPEED 60;
