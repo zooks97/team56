@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+// Reed
+=======
 //AJ
 
+>>>>>>> origin/master
 ////encoder test
 <<<<<<< HEAD
 //// frank delgadillo 
