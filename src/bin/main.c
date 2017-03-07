@@ -1,8 +1,12 @@
 //AJ
 
 ////encoder test
+<<<<<<< HEAD
 //// frank delgadillo 
 
+=======
+// Steve is the best
+>>>>>>> origin/master
 #include "motion.h"
 task main() {
 
