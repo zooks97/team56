@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // Reed
+=======
+//AJ
+
+>>>>>>> origin/master
 ////encoder test
 #include "motion.h"
 task main() {
