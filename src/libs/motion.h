@@ -30,7 +30,7 @@ void zeroTurn(float angle);
 void movingTurn(float radius);
 
 //move straight for dist mm
-void straight(float dist){ //, float speed){
+void straight(float dist, float speed){
     int deg = DEGMM * dist; //degree value given to the motors
     float error;            //error value between motors
     float pGain = 3;        //proportional gain

@@ -1,12 +1,5 @@
-#include "motion.h"
-task main() {
-
-straight(10000);
-
-}
-
-#include "motion.h"
-#include "data_cleaning.h"
+#include "../libs/motion.h"
+#include "../libs/data_cleaning.h"
 
 ////PID straight test v1
 task main(){
@@ -18,6 +11,6 @@ task main(){
 //    displayString(1, "%f", nImmediateBatteryLevel);
 //    wait1Msec(1000);
 //    //straight(distance);
-    speed = batToVel(nImmediateBatteryLevel);
+    float speed = batToVel(nImmediateBatteryLevel);
     straight(distance, speed);
-//}
+}
