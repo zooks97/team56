@@ -1,11 +1,11 @@
 /**** TEAM 56 ****/
 // Demonstration //
 
-#include "../libs/motion.h"
-#include "../libs/data.h"
-#include "../libs/lsts.h"
-#include "../libs/bin.h"
-#include "../libs/sensor.h"
+#include "../lib/motion.h"
+#include "../lib/data.h"
+#include "../lib/lsts.h"
+#include "../lib/bin.h"
+#include "../lib/sensor.h"
 
 task main(){
 

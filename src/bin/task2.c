@@ -1,9 +1,9 @@
 /**** TEAM 56 ****/
 // PoC Task 2 //
 
-#include "../libs/motion.h"
-#include "../libs/data.h"
-#include "../libs/lsts.h"
+#include "../lib/motion.h"
+#include "../lib/data.h"
+#include "../lib/lsts.h"
 
 task main(){
     //set coordinates of destination

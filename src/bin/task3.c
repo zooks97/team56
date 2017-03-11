@@ -1,7 +1,7 @@
 /**** TEAM 56 ****/
 // PoC Task 3 //
 
-#include "../libs/motion.h"
+#include "../lib/motion.h"
 
 task main(){
     float pow = 50;

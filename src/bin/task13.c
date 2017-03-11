@@ -3,7 +3,7 @@
 // PoC Task 3 //
 // Integration //
 
-#include "../libs/motion.h"
+#include "../lib/motion.h"
 
 task main(){
     float pow = 50;     //lower is beter for obstacles

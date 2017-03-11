@@ -3,10 +3,10 @@
 // PoC Task 5 //
 // Integration //
 
-#include "../libs/motion.h"
-#include "../libs/data.h"
-#include "../libs/sensor.h"
-#include "../libs/bin.h"
+#include "../lib/motion.h"
+#include "../lib/data.h"
+#include "../lib/sensor.h"
+#include "../lib/bin.h"
 
 task main(){
     //move forward 0.45m

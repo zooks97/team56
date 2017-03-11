@@ -1,8 +1,8 @@
 /**** TEAM 56 ****/
 // PoC Task 5 //
 
-#include "../libs/motion.h"
-#include "../libs/bin.h"
+#include "../lib/motion.h"
+#include "../lib/bin.h"
 
 task main(){
     //move forward 0.45m

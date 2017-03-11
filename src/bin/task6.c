@@ -1,8 +1,8 @@
 /**** TEAM 56 ****/
 // PoC Task 6 //
 
-#include "../libs/data.h"
-#include "../libs/lsts.h"
+#include "../lib/data.h"
+#include "../lib/lsts.h"
 
 task main(){
     //request coordinates

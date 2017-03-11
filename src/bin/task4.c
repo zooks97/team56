@@ -1,9 +1,9 @@
 /**** TEAM 56 ****/
 // PoC Task 4 //
 
-#include "../libs/motion.h"
-#include "../libs/data.h"
-#include "../libs/sensor.h"
+#include "../lib/motion.h"
+#include "../lib/data.h"
+#include "../lib/sensor.h"
 
 task main(){
     //begin polling hall sensor
