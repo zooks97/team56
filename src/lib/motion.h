@@ -25,9 +25,9 @@
 #define DEGMM 1 //(4.3/3.0) //degrees per mm
 
 
-void straight(float dist);
-void zeroTurn(float angle);
-void movingTurn(float radius);
+void straight(float dist, float pow);
+void zeroTurn(float angle, float pow);
+void movingTurn(float radius, float angle, float pow);
 
 //move straight for dist mm
 void straight(float dist, float pow){
@@ -52,35 +52,44 @@ void straight(float dist, float pow){
         motor[motorA] = -(pGain * error / 2) + pow;
         motor[motorB] =  (pGain * error / 2) + pow;
     }
+    motor[motorA] = 0;
+    motor[motorB] = 0;
+    return;
 }
 
-//negative angle to turn DIR
-//positive angle to turn DIR
-//works a lot like the straight function,
-//just reverses the directions of the motors
+//FIXME//
+//DOES NOT WORK FOR NEGATIVE ANGLE//
+//FIX SO THAT DIRECTION CAN BE CHOSEN//
 void zeroTurn(float angle, float pow){
     float error;
-    float pGain = 3;
-    float dist;
+    //float pGain = 0.1;
     //pow = powScale(pow);
     nMotorEncoder[motorA] = 0;
     nMotorEncoder[motorB] = 0;
 
-    dist = 2 * PI * RRBT * angle /  360;
-    angle = dist * 360 / (2 * PI * RWHL);
+    //this equation was created from testing using an input angle
+    //of 1800 (see the y term)
+    short x = 8;
+    short y = 1;
+    angle = angle + (angle / 360 * x) - ((1800 - angle) / 360 * y);
+
+    angle = RRBT / RWHL * angle;
+
     while(nMotorEncoder[motorB] > -angle){
-        error = 0;//nMotorEncoder[motorA] + nMotorEncoder[motorB];
-        motor[motorA] =  (pGain * error / 2) + pow;
-        motor[motorB] = -(pGain * error / 2) - pow;
+        //error = nMotorEncoder[motorA] + nMotorEncoder[motorB];
+        //motor[motorA] =  (pGain * error / 2) + pow;
+        //motor[motorB] = -(pGain * error / 2) - pow;
+        error = 0;
+        motor[motorA] = pow;
+        motor[motorB] = -pow;
     }
+    motor[motorA] = 0;
+    motor[motorB] = 0;
+    return;
 }
 
-//negative radius to turn right
-//positive radius to turn left
-//speed in mm/s (it'll be converted to angle/s)
-//radius in mm
-//angle in deg
-void movingTurn(float radius, float angle, float pow){ //, float speed){
+
+void movingTurn(float radius, float angle, float pow){
     /* should be able to make the robot act like
        it's going around a circle of the given radius
        at the given speed in mm/s
@@ -92,10 +101,10 @@ void movingTurn(float radius, float angle, float pow){ //, float speed){
     float inArc = (2 * PI * inRadius) * (angle / 360);
     float outArc = (2 * PI * outRadius) * (angle / 360);
 
-    float ratio = inArc / outArc;
+    //float ratio = inArc / outArc;
 
     float inPow = pow;
-    float outPow = pow;
+    float outPow = pow * outRadius / inRadius;
 
     float deg = outArc * DEGMM;
 
@@ -115,4 +124,7 @@ void movingTurn(float radius, float angle, float pow){ //, float speed){
             motor[motorB] = outPow;
         }
     }
+    motor[motorA] = 0;
+    motor[motorB] = 0;
+    return;
 }

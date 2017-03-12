@@ -5,5 +5,7 @@
 
 task main(){
 
+    movingTurn(500, 360, 30);
+
     return;
 }
