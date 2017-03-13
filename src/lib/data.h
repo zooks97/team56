@@ -1,9 +1,3 @@
-#define VOLTMAX 7.5
+/**** TEAM 56 ****/
+// DATA MANAGEMENT //
 
-float powScale(float pow) {
-    float voltageBatt = nImmediateBatteryLevel;
-
-    pow *= VOLTMAX / voltageBatt;
-
-    return pow;
-}

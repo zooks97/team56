@@ -1,8 +1,7 @@
-/*  STANDARDS
- * return functName(args){
- *      blah
- *  }
- *
+/**** TEAM 56 ****/
+// MOTION FUNCTIONS //
+
+/*
  * DISTANCE UNIT    mm
  * ANGLE UNIT       deg
  * SPEED UNIT       mm / s
@@ -11,14 +10,7 @@
  * motorA   right
  * motorB   left
  *
- *
- *
- *
- * define all constants in preprocessor
- * make function prototypes
- * use code standard
- * comment heavily
-*/
+/*
 
 #define RWHL 40.8 //mm
 #define RRBT 85 //mm
