@@ -10,12 +10,11 @@
  * motorA   right
  * motorB   left
  *
-/*
+*/
 
-#define RWHL 40.8 //mm
-#define RRBT 85 //mm
-#define DEGMM 1 //(4.3/3.0) //degrees per mm
-
+#define RWHL          40.8 //mm
+#define RRBT           85.0 //mm
+#define DEGMM       1 //(4.3/3.0) //degrees per mm
 
 void straight(float dist, float pow);
 void zeroTurn(float angle, float pow);
@@ -23,11 +22,10 @@ void movingTurn(float radius, float angle, float pow);
 
 //move straight for dist mm
 void straight(float dist, float pow){
-    //int deg = DEGMM * dist; //degree value given to the motors
     float error;            //error value between motors
     float pGain = 3;        //proportional gain;
     int deg = dist * 360 / (2 * PI * RWHL);
-    //pow = powScale(pow);
+
     //zero the motor encoders
     nMotorEncoder[motorA] = 0;
     nMotorEncoder[motorB] = 0;
@@ -53,9 +51,8 @@ void straight(float dist, float pow){
 //DOES NOT WORK FOR NEGATIVE ANGLE//
 //FIX SO THAT DIRECTION CAN BE CHOSEN//
 void zeroTurn(float angle, float pow){
-    float error;
+    //float error;
     //float pGain = 0.1;
-    //pow = powScale(pow);
     nMotorEncoder[motorA] = 0;
     nMotorEncoder[motorB] = 0;
 
@@ -65,22 +62,37 @@ void zeroTurn(float angle, float pow){
     short y = 1;
     angle = angle + (angle / 360 * x) - ((1800 - angle) / 360 * y);
 
+    //convert to robot degrees
     angle = RRBT / RWHL * angle;
 
-    while(nMotorEncoder[motorB] > -angle){
-        //error = nMotorEncoder[motorA] + nMotorEncoder[motorB];
-        //motor[motorA] =  (pGain * error / 2) + pow;
-        //motor[motorB] = -(pGain * error / 2) - pow;
-        error = 0;
-        motor[motorA] = pow;
-        motor[motorB] = -pow;
+    if(angle > 0){
+        while(nMotorEncoder[motorB] > -angle){
+            //error = nMotorEncoder[motorA] + nMotorEncoder[motorB];
+            //motor[motorA] =  (pGain * error / 2) + pow;
+            //motor[motorB] = -(pGain * error / 2) - pow;
+            //error = 0;
+            motor[motorA] = pow;
+            motor[motorB] = -pow;
+        }
+    }else{
+            while(nMotorEncoder[motorA] > -angle){
+            //error = nMotorEncoder[motorA] + nMotorEncoder[motorB];
+            //motor[motorA] =  (pGain * error / 2) + pow;
+            //motor[motorB] = -(pGain * error / 2) - pow;
+            //error = 0;
+            motor[motorB] = pow;
+            motor[motorA] = -pow;
+        }
     }
+
     motor[motorA] = 0;
     motor[motorB] = 0;
     return;
 }
 
-
+//FIXME//
+//CHANGE SO THAT SIGN OF ANGLE DETERMINES DIRECTION//
+//NOT SIGN OF RADIUS//
 void movingTurn(float radius, float angle, float pow){
     /* should be able to make the robot act like
        it's going around a circle of the given radius
