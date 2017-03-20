@@ -47,9 +47,8 @@ void straight(float dist, float pow){
     return;
 }
 
-//FIXME//
-//DOES NOT WORK FOR NEGATIVE ANGLE//
-//FIX SO THAT DIRECTION CAN BE CHOSEN//
+//Should work with negative (couterclockwise)//
+//turns now, but HASNT BEEN TESTED//
 void zeroTurn(float angle, float pow){
     //float error;
     //float pGain = 0.1;
@@ -90,9 +89,8 @@ void zeroTurn(float angle, float pow){
     return;
 }
 
-//FIXME//
-//CHANGE SO THAT SIGN OF ANGLE DETERMINES DIRECTION//
-//NOT SIGN OF RADIUS//
+//Should work with negative (couterclockwise)//
+//turns now, but HASNT BEEN TESTED//
 void movingTurn(float radius, float angle, float pow){
     /* should be able to make the robot act like
        it's going around a circle of the given radius
@@ -116,7 +114,7 @@ void movingTurn(float radius, float angle, float pow){
     nMotorEncoder[motorB] = 0;
 
     //turn right
-    if(radius > 0){
+    if(angle < 0){
         while(nMotorEncoder[motorB] < deg){
             motor[motorA] = outPow;
             motor[motorB] = inPow;
