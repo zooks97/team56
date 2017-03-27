@@ -22,7 +22,7 @@ Lz2 = [sqrt(100^2 + 130^2):STEP:((100 / sind(60)) + (130 - (100 / tand(60))))];
 % Range of length of pipe for site 3
 Lz3 = [sqrt(91.2^2 + 65^2):STEP:((41.2 / cosd(20) + sqrt(2) * (65 - 41.2 * tand(20))))];
 
-time = [6:1:12]; %keep these together!
+time = [6:0.5:12]; %keep these together!
 Ein = 120 ./ time;      %keep these together!
 
 % Pipe loss coefficient options
@@ -36,9 +36,9 @@ Np = [.8, .83, .86, .89, .92];
 % Turbine efficiency options
 Nt = [.83, .86, .89, .92, .94];
 % Height of wall range
-hwall = [5:0.5:20];
+hwall = [5:1:20];
 % Flow rate range
-flow = [1:1:500];
+flow = [1:10:500];
 
 %V = (D ./ 2) .^ 2 .* pi ./ flow;
 %M = flow .* PWATER ./ V .* Lz1;
@@ -51,9 +51,8 @@ flow = [1:1:500];
 counter = 0;
 EconsMin = Inf;
 
-for(i=1:length(Lz2))                           %L
-    L = Lz2;
-    i
+for(i=1:length(Lz1))                           %L
+    L = Lz1;
     for(j=1:length(time))                     %time and Ein
         for(k=1:length(xi))
             for(l=1:length(D))
@@ -64,22 +63,18 @@ for(i=1:length(Lz2))                           %L
                                 for(q=1:length(flow))
                                     V = (D(l) / 2) ^ 2 * pi / flow(q);
                                     M = flow(q) * PWATER / V * L(i);
-                                    
                                     %Econs(i*j*k*l*m*n*o*p*q) = ...
                                     %    (1-Np(n))*Ein(j) + ...
                                     %    Nt(o)*Np(n)*Ein(j)*(1/Nt(o) - 1) + ...
                                     %    M(f(m)*L(i)*V^2/D(l)) + M*V^2/2*xi(k);
-                                    
                                        Econs = (1-Np(n))*Ein(j) + ...
                                         Nt(o)*Np(n)*Ein(j)*(1/Nt(o) - 1) + ...
                                         M * (f(m)*L(i)*V^2/D(l)) + M*V^2/2*xi(k);
                                     
                                         if Econs < EconsMin
                                             EconsMin = Econs;
-                                            vals = [L(i), time(j), xi(k), D(l), f(m), Np(n), Nt(o), hwall(p), flow(q)];
-                                        end
-                                        
-                                        counter = counter + 1;
+                                            vals = [L(i), time(j), xi(k), D(l), f(m), np(n), nt(o),                                     
+                                    counter = counter + 1;
                                 end
                             end
                         end
