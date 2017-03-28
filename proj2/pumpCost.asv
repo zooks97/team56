@@ -1,0 +1,129 @@
+function cost = pumpCost(Np, h)
+    switch(Np)
+        case 0.80
+            switch(h)
+                case 20
+                    cost = 200;
+                case 30
+                    cost = 220;
+                case 40
+                    cost = 242;
+                case 50
+                    cost = 266;
+                case 60
+                    cost = 293;
+                case 70
+                    cost = 322;
+                case 80
+                    cost = 354;
+                case 90
+                    cost = 390;
+                case 100
+                    cost = 429;
+                case 110
+                    cost = 472;
+                case 120
+                    cost = 519;
+            end
+        case 0.83
+            switch(h)
+                case 20
+                    cost = 240;
+                case 30
+                    cost = 264;
+                case 40
+                    cost = 290;
+                case 50
+                    cost = 319;
+                case 60
+                    cost = 351;
+                case 70
+                    cost = 387;
+                case 80
+                    cost = 425;
+                case 90
+                    cost = 468;
+                case 100
+                    cost = 514;
+                case 110
+                    cost = 566;
+                case 120
+                    cost = 622;
+            end
+        case 0.86
+            switch(h)
+                case 20
+                    cost = 288;
+                case 30
+                    cost = 317;
+                case 40
+                    cost = 348;
+                case 50
+                    cost = ;
+                case 60
+                    cost = ;
+                case 70
+                    cost = ;
+                case 80
+                    cost = ;
+                case 90
+                    cost = ;
+                case 100
+                    cost = ;
+                case 110
+                    cost = ;
+                case 120
+                    cost = ;
+            end
+        case 0.89
+            switch(h)
+                case 20
+                    cost = ;
+                case 30
+                    cost = ;
+                case 40
+                    cost = ;
+                case 50
+                    cost = ;
+                case 60
+                    cost = ;
+                case 70
+                    cost = ;
+                case 80
+                    cost = ;
+                case 90
+                    cost = ;
+                case 100
+                    cost = ;
+                case 110
+                    cost = ;
+                case 120
+                    cost = ;
+            end
+        case 0.92
+            switch(h)
+                case 20
+                    cost = ;
+                case 30
+                    cost = ;
+                case 40
+                    cost = ;
+                case 50
+                    cost = ;
+                case 60
+                    cost = ;
+                case 70
+                    cost = ;
+                case 80
+                    cost = ;
+                case 90
+                    cost = ;
+                case 100
+                    cost = ;
+                case 110
+                    cost = ;
+                case 120
+                    cost = ;
+            end
+    end
+end
