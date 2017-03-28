@@ -53,8 +53,9 @@ EconsMin = Inf;
 
 for(i=1:length(Lz2))                           %L
     L = Lz2;
-    i
+    fprintf('\n%d: ', i);
     for(j=1:length(time))                     %time and Ein
+        fprintf('%d', j);
         for(k=1:length(xi))
             for(l=1:length(D))
                 for(m=1:length(f))
