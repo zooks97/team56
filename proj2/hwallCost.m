@@ -13,5 +13,7 @@ function rate = hwallCost(hwall)
         rate = 250 + (hwall - 17.5) * (90) / 2.5;
     elseif(hwall == 20)
         rate = 340;
+    else
+        rate = -1;
     end
 end

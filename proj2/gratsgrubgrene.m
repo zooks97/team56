@@ -15,8 +15,8 @@ EMAXJ = EMAX * MWH2J; %% J
 FACILITYCOST = 100000; %% $
 
 %%STEPS
-FSTEP = 1; %% m^3 / s
-TSTEP = 1 / 60; %% hr
+FSTEP = 38; %% m^3 / s
+TSTEP = 1; %% hr
 TMIN = 6; %% hr
 HWALLSTEP = 0.5; %% m
 

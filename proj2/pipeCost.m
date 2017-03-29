@@ -28,6 +28,8 @@ function cost = pipeCost(f, D)
                     cost = 262.00;
                 case 3.00
                     cost = 340.00;
+                otherwise
+                    cost = -1;
             end
         case 0.03
             switch(D)
@@ -57,6 +59,8 @@ function cost = pipeCost(f, D)
                     cost = 315;
                 case 3.00
                     cost = 408;
+                otherwise
+                    cost = -1;
             end
         case 0.02
             switch(D)
@@ -86,6 +90,8 @@ function cost = pipeCost(f, D)
                     cost = 378;
                 case 3.00
                     cost = 490;
+                otherwise
+                    cost = -1;
             end
         case 0.01
             switch(D)
@@ -115,6 +121,8 @@ function cost = pipeCost(f, D)
                     cost = 567;
                 case 3.00
                     cost = 735;
+                otherwise
+                    cost = -1;
             end
         case 0.005
             switch(D)
@@ -144,6 +152,8 @@ function cost = pipeCost(f, D)
                     cost = 708;
                 case 3.00
                     cost = 919;
+                otherwise
+                    cost = -1;
             end
         case 0.002
             switch(D)
@@ -173,6 +183,10 @@ function cost = pipeCost(f, D)
                     cost = 779;
                 case 3.00
                     cost = 1011;
+                otherwise
+                    cost = -1;
             end
+        otherwise
+            cost = -1;
     end
 end

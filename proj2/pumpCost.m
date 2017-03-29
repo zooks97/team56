@@ -25,6 +25,8 @@ function cost = pumpCost(Np, h)
                     cost = 472;
                 case 120
                     cost = 519;
+                otherwise
+                    cost = -1;
             end
         case 0.83
             switch(h)
@@ -50,6 +52,8 @@ function cost = pumpCost(Np, h)
                     cost = 566;
                 case 120
                     cost = 622;
+                otherwise
+                    cost = -1;
             end
         case 0.86
             switch(h)
@@ -75,6 +79,8 @@ function cost = pumpCost(Np, h)
                     cost = 679;
                 case 120
                     cost = 747;
+                otherwise
+                    cost = -1;
             end
         case 0.89
             switch(h)
@@ -100,6 +106,8 @@ function cost = pumpCost(Np, h)
                     cost = 815;
                 case 120
                     cost = 896;
+                otherwise
+                    cost = -1;
             end
         case 0.92
             switch(h)
@@ -125,6 +133,10 @@ function cost = pumpCost(Np, h)
                     cost = 978;
                 case 120
                     cost = 1076;
+                otherwise
+                    cost = -1;
             end
+        otherwise
+            cost = -1;
     end
 end

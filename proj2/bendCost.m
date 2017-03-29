@@ -28,6 +28,8 @@ function cost = bendCost(xi, D)
                     cost = 654;
                 case 3.00
                     cost = 849;
+                otherwise
+                    cost = -1;
             end
         case 0.15
             switch(D)
@@ -57,6 +59,8 @@ function cost = bendCost(xi, D)
                     cost = 687;
                 case 3.00
                     cost = 892;
+                otherwise
+                    cost = -1;
             end
         case 0.2
             switch(D)
@@ -86,6 +90,8 @@ function cost = bendCost(xi, D)
                     cost = 721;
                 case 3.00
                     cost = 936;
+                otherwise
+                    cost = -1;
             end
         case 0.22
             switch(D)
@@ -115,6 +121,8 @@ function cost = bendCost(xi, D)
                     cost = 757;
                 case 3.00
                     cost = 983;
+                otherwise
+                    cost = -1;
             end
         case 0.27
             switch(D)
@@ -144,6 +152,8 @@ function cost = bendCost(xi, D)
                     cost = 795;
                 case 3.00
                     cost = 1032;
+                otherwise
+                    cost = -1;
             end
         case 0.3
             switch(D)
@@ -173,6 +183,10 @@ function cost = bendCost(xi, D)
                     cost = 835;
                 case 3.00
                     cost = 1084;
+                otherwise
+                    cost = -1;
             end
+        otherwise
+            cost = -1;
     end
 end

@@ -14,6 +14,8 @@ function cost = siteCost(S, sa, hwall)
         case 65
             wallCost = hwallCost(hwall) * sqrt(sa / pi) * 2 * pi;
             cost = wallCost + 150000 + 0.3 * sa + 0.6 * ((225 / 2)^2 * pi - sa);
+        otherwise
+            cost = -1;
     end
     cost = cost + S(6) * 250 + S(2) * 500;  %area under pipe & pipe length
 end

@@ -25,6 +25,8 @@ function cost = turbCost(Nt, h)
                     cost = 849;
                 case 120
                     cost = 934;
+                otherwise
+                    cost = -1;
             end
         case 0.86
             switch(h)
@@ -50,6 +52,8 @@ function cost = turbCost(Nt, h)
                     cost = 1019;
                 case 120
                     cost = 1120;
+                otherwise
+                    cost = -1;
             end
         case 0.89
             switch(h)
@@ -75,6 +79,8 @@ function cost = turbCost(Nt, h)
                     cost = 1222;
                 case 120
                     cost = 1345;
+                otherwise
+                    cost = -1;
             end
         case 0.92
             switch(h)
@@ -100,6 +106,8 @@ function cost = turbCost(Nt, h)
                     cost = 1467;
                 case 120
                     cost = 1614;
+                otherwise
+                    cost = -1;
             end
         case 0.94
             switch(h)
@@ -125,6 +133,10 @@ function cost = turbCost(Nt, h)
                     cost = 1760;
                 case 120
                     cost = 1936;
+                otherwise
+                    cost = -1;
             end
+        otherwise
+            cost = -1;
     end
 end
