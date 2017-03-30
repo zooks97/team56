@@ -1,7 +1,7 @@
 %%FILE SHIT
 fileName = 'out.txt';
 outFile = fopen(fileName, 'w');
-fprintf(outFile, 'EFFICIENCY\tFLOW\tTIME\tF\t\tD\t\tNt\t\tSITE\tHWALL\tSA\t\t\tNp\t\tCOST\n');
+%fprintf(outFile, 'EFFICIENCY\tFLOW\tTIME\tF\t\tD\t\tNt\t\tSITE\tHWALL\tSA\t\t\tNp\t\tCOST\n');
 
 %%CONSTANTS
 PWATER = 1000; %% kg / m^3
@@ -15,8 +15,8 @@ EMAXJ = EMAX * MWH2J; %% J
 FACILITYCOST = 100000; %% $
 
 %%STEPS
-FSTEP = 19; %% m^3 / s
-TSTEP = 1; %% hr
+FSTEP = 1; %% m^3 / s
+TSTEP = (1/60); %% hr
 TMIN = 6; %% hr
 HWALLSTEP = 0.5; %% m
 
