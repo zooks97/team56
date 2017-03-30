@@ -1,7 +1,7 @@
 %%FILE SHIT
 fileName = 'out.txt';
 outFile = fopen(fileName, 'w');
-fprintf(outFile, 'FLOW\tTIME\tF\tD\tN\tSITE\tHWALL\tSA\tCOST\n');
+fprintf(outFile, 'EFFICIENCY\tFLOW\tTIME\tF\t\tD\t\tNt\t\tSITE\tHWALL\tSA\t\t\tNp\t\tCOST\n');
 
 %%CONSTANTS
 PWATER = 1000; %% kg / m^3
@@ -15,7 +15,7 @@ EMAXJ = EMAX * MWH2J; %% J
 FACILITYCOST = 100000; %% $
 
 %%STEPS
-FSTEP = 38; %% m^3 / s
+FSTEP = 19; %% m^3 / s
 TSTEP = 1; %% hr
 TMIN = 6; %% hr
 HWALLSTEP = 0.5; %% m
@@ -38,11 +38,11 @@ S3 = [65, 65 * sqrt(2) + 26.2, 1, 0.2, pi * (225 / 2)^2, 65 * 65 / 2 - (50 * 50 
 S = [S1; S21; S22; S3];
 
 minCost = Inf;
+costOverEffMin = Inf;
 
 for(i=1:length(flow))
     i %%print status
     for(j=1:length(t))
-        %j %%print status
         volM3 = flow(i) * (t(j) * HR2SEC);
         volKg = volM3 * PWATER;
         for(k=1:size(S, 1))
@@ -70,16 +70,25 @@ for(i=1:length(flow))
 
                             if (Eout >= EMINJ) && (Eout <= EMAXJ) && (sa <= S(k, 5))
                                 
-                                cost = pipeCost(f(n), D(l)) * S(k, 2) + ... 
+                                [cost, Np] = pumpCost(Nt(m), S(k, 1));
+                                cost = cost + pipeCost(f(n), D(l)) * S(k, 2) + ... 
                                        bendCost(S(k, 4), D(l)) * S(k, 3) + ...
                                        turbCost(Nt(m), S(k, 1)) * flow(i) + ...
                                        siteCost(S(k,:), sa, hwall(o)) + ...
                                        FACILITYCOST; 
-                                
-                                if cost < minCost
-                                    minCost = cost;
-                                    fprintf(outFile, '%f\t%f\t%f\t%f\t%f\t%d\t%f\t%f\t%f\n', flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, cost);
+                                efficiency = Eout / Ein;
+                                costOverEff = cost / efficiency;
+                                if costOverEff < costOverEffMin
+                                    costOverEffMin = costOverEff;
+                                    fprintf(outFile, '%f\n', costOverEff);
+                                    %fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost);
                                 end
+                                %
+                                %if cost < minCost
+                                %    minCost = cost;
+                                %    
+                                %    fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost);
+                                %end
                             end
                         end
                     end

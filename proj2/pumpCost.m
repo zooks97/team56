@@ -1,7 +1,8 @@
-function cost = pumpCost(Np, h)
+function [cost, Np] = pumpCost(Nt, h)
     h = floor(h / 10) * 10;
-    switch(Np)
-        case 0.80
+    switch(Nt)
+        case 0.83
+            Np = .80;
             switch(h)
                 case 20
                     cost = 200;
@@ -28,7 +29,8 @@ function cost = pumpCost(Np, h)
                 otherwise
                     cost = -1;
             end
-        case 0.83
+        case 0.86
+            Np = .83;
             switch(h)
                 case 20
                     cost = 240;
@@ -55,7 +57,8 @@ function cost = pumpCost(Np, h)
                 otherwise
                     cost = -1;
             end
-        case 0.86
+        case 0.89
+            Np = .86;
             switch(h)
                 case 20
                     cost = 288;
@@ -82,7 +85,8 @@ function cost = pumpCost(Np, h)
                 otherwise
                     cost = -1;
             end
-        case 0.89
+        case 0.92
+            Np = .89;
             switch(h)
                 case 20
                     cost = 346;
@@ -109,7 +113,8 @@ function cost = pumpCost(Np, h)
                 otherwise
                     cost = -1;
             end
-        case 0.92
+        case 0.94
+            Np = .92;
             switch(h)
                 case 20
                     cost = 415;
