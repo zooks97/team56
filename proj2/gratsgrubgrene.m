@@ -1,7 +1,10 @@
+clear
+clc
+format compact
 %%FILE SHIT
 fileName = 'out.txt';
 outFile = fopen(fileName, 'w');
-%fprintf(outFile, 'EFFICIENCY\tFLOW\tTIME\tF\t\tD\t\tNt\t\tSITE\tHWALL\tSA\t\t\tNp\t\tCOST\n');
+fprintf(outFile, 'EFFICIENCY\tFLOW\tTIME\tF\t\tD\t\tNt\t\tSITE\tHWALL\tSA\t\t\tNp\t\tCOST\t\tCOSTOVEREFFICIENCY\n');
 
 %%CONSTANTS
 PWATER = 1000; %% kg / m^3
@@ -16,7 +19,7 @@ FACILITYCOST = 100000; %% $
 
 %%STEPS
 FSTEP = 1; %% m^3 / s
-TSTEP = (1/60); %% hr
+TSTEP = (10/60); %% hr
 TMIN = 6; %% hr
 HWALLSTEP = 0.5; %% m
 
@@ -78,11 +81,11 @@ for(i=1:length(flow))
                                        FACILITYCOST; 
                                 efficiency = Eout / Ein;
                                 costOverEff = cost / efficiency;
-                                %if costOverEff < costOverEffMin
-                                %costOverEffMin = costOverEff;
-                                fprintf(outFile, '%f\n', costOverEff);
-                                    %fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost);
-                                %end
+                                if costOverEff < costOverEffMin
+                                    costOverEffMin = costOverEff;
+                                    %fprintf(outFile, '%f\n', costOverEff);
+                                    fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost, costOverEff);
+                                end
                                 %
                                 %if cost < minCost
                                 %    minCost = cost;
