@@ -78,11 +78,11 @@ for(i=1:length(flow))
                                        FACILITYCOST; 
                                 efficiency = Eout / Ein;
                                 costOverEff = cost / efficiency;
-                                if costOverEff < costOverEffMin
-                                    costOverEffMin = costOverEff;
-                                    fprintf(outFile, '%f\n', costOverEff);
+                                %if costOverEff < costOverEffMin
+                                %costOverEffMin = costOverEff;
+                                fprintf(outFile, '%f\n', costOverEff);
                                     %fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost);
-                                end
+                                %end
                                 %
                                 %if cost < minCost
                                 %    minCost = cost;
