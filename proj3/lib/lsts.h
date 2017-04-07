@@ -1,14 +1,6 @@
 /**** TEAM 56 ****/
 // LSTS SYSTEM //
 
-typedef struct{
-    float x;
-    float y;
-    float height;
-    float heading;
-    int errorCode;
-} location;
-
 location LSTS(location ALV) {
     prevX = ALV.x
     prevY = ALV.y
