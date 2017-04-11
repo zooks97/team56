@@ -19,11 +19,15 @@
             take derivative of moving average
 
 //lsts.h - pulling from lsts system
-    function to read from lsts
-        understand how this is supposted to work
+    *function to read from lsts
+        *understand how this is supposted to work
 
 //motion.h - how to move the robot
-    split forward/back, left/right functions
+    *split forward/back, left/right functions
+    test all new functions (and old ones too)
+        make backward go backward
+        make movingLeft go left
+    change all function calls
     explore nMotorEncoderTarget
 
 //sensors.h - functions to work the hall effect / other sensors

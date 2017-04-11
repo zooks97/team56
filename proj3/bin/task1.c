@@ -16,7 +16,7 @@ task main(){
     motor[motorB] = 0;
     wait1Msec(100);
 
-    straight(1200, pow);
+    forward(1200, pow);
 
     wait1Msec(100);
     bFloatDuringInactiveMotorPWM = true;
