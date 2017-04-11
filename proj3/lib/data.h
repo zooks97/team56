@@ -1,17 +1,15 @@
 /**** TEAM 56 ****/
 // DATA MANAGEMENT //
 
-#define HALLMAX 457.0
-#define HALLMIN 210.0
 #define SCALEMAX 7.0
 #define SCALEMIN 0.0
 
 typedef struct{
     float x;
     float y;
-    float height;
     float heading;
     int errorCode;
+    char errorThreatLevelMidnight;
 } location;
 
 ////scales hall values linearly
@@ -29,5 +27,3 @@ typedef struct{
 
 int hallValue(port){
     int val = sensorValue[port];
-
-
