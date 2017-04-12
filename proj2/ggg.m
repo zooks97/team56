@@ -18,9 +18,9 @@ EMAXJ = EMAX * MWH2J; %% J
 FACILITYCOST = 100000; %% $
 
 %%STEPS
-FSTEP = 1; %% m^3 / s
-TSTEP = (10/60); %% hr
-TMIN = 6; %% hr
+FSTEP = 0.5; %% m^3 / s
+TSTEP = (1/60); %% hr
+TMIN = 10; %% hr
 HWALLSTEP = 0.5; %% m
 
 %%VARS
@@ -85,6 +85,7 @@ for(i=1:length(flow))
                                     costOverEffMin = costOverEff;
                                     %fprintf(outFile, '%f\n', costOverEff);
                                     fprintf(outFile, '%f\t%.2f\t%.2f\t%.3f\t%.2f\t%.2f\t%d\t\t%.1f \t%.2f\t%.2f\t%.2f\t%.2f\n', efficiency, flow(i), t(j), f(n), D(l), Nt(m), k, hwall(o), sa, Np, cost, costOverEff);
+                                    bestK = k;
                                 end
                                 %
                                 %if cost < minCost
@@ -100,6 +101,12 @@ for(i=1:length(flow))
         end
     end
 end
+
+fprintf(outFile, '\nHEFF\tPIPELENGTH\t#BENDS\tXI\tSA\tRAISEAREA\n');
+for(z=1:6)
+    fprintf(outFile, '%.2f\t', S(bestK, z));
+end
+fprintf(outFile, '\n'); 
 
 %%MORE FILE SHIT
 fclose(outFile);
