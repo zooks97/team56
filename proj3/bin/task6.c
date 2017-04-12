@@ -6,8 +6,20 @@
 
 task main(){
     //request coordinates
-
-    //parse coordinates
+		location ALV;
+		ALV.x = 0;
+		ALV.y = 0;
+		ALV.heading = 0;
+		ALV.errorCode = 1;
+		ALV = LSTS(ALV);
+    displayString(1, "(%f, %f)", ALV.x, ALV.y);
+    displayString(2, "Error Code: %i", ALV.errorCode);
+    if (ALV.errorThreatLevelMidnight == '$') {
+    		displayString(3, "Sys Perf n/a");
+    } else {
+    		displayString(3, "Sys Perf aff");
+    }
+		//parse coordinates
 
     //sanity check
 
