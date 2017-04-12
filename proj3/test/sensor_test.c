@@ -1,7 +1,7 @@
 #include "../lib/sensor.h"
-#include "../lib/data.h"
+//#include "../lib/data.h"
 
-#define HALLPORT S1
+//#define HALLPORT S1
 
 task main(){
 	while(true){

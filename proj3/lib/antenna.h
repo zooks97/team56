@@ -10,10 +10,10 @@ void drop(){
 		motor[motorC] = -50;
 		while(nMotorRunState[motorC] != runStateIdle){}
 		motor[motorC] = 0;
-		wait1Msec(50);
+		wait1Msec(100);
 
-		nMotorEncoderTarget[motorC] = 60;
-		motor[motorC] = 50;
+		nMotorEncoderTarget[motorC] = 90;
+		motor[motorC] = 80;
 		while(nMotorRunState[motorC] != runStateIdle){}
 		motor[motorC] = 0;
 		wait1Msec(500);

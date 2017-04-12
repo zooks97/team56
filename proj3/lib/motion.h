@@ -64,15 +64,15 @@ void backward(float dist, float pow){
 
     //checks to see if the motor has travelled the required
     //number of degrees (rotations)
-    while(nMotorEncoder[motorA] < deg){
+    while(nMotorEncoder[motorA] > deg){
         //error is the difference between how many degrees
         //each motor has travelled
         error = nMotorEncoder[motorA] - nMotorEncoder[motorB];
         //adjust the speed of each motor from the base speed
         //proportionally to half the error (each motor tries
         //to correct for half the error
-        motor[motorA] = -(pGain * error / 2) + pow;
-        motor[motorB] =  (pGain * error / 2) + pow;
+        motor[motorA] = (pGain * error / 2) + pow;
+        motor[motorB] = -(pGain * error / 2) + pow;
     }
     motor[motorA] = 0;
     motor[motorB] = 0;
@@ -146,7 +146,7 @@ void movingLeft(float radius, float angle, float pow){
     float inRadius = radius - RRBT;
     float outRadius = radius + RRBT;
 
-    float inArc = (2 * PI * inRadius) * (angle / 360);
+    //float inArc = (2 * PI * inRadius) * (angle / 360);
     float outArc = (2 * PI * outRadius) * (angle / 360);
 
     //float ratio = inArc / outArc;
@@ -161,8 +161,8 @@ void movingLeft(float radius, float angle, float pow){
 
 
     while(nMotorEncoder[motorA] < deg){
-        motor[motorA] = inPow;
-        motor[motorB] = outPow;
+        motor[motorA] = outPow;
+        motor[motorB] = inPow;
     }
 
     motor[motorA] = 0;
@@ -179,7 +179,7 @@ void movingRight(float radius, float angle, float pow){
     float inRadius = radius - RRBT;
     float outRadius = radius + RRBT;
 
-    float inArc = (2 * PI * inRadius) * (angle / 360);
+    //float inArc = (2 * PI * inRadius) * (angle / 360);
     float outArc = (2 * PI * outRadius) * (angle / 360);
 
     //float ratio = inArc / outArc;

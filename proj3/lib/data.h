@@ -24,6 +24,3 @@ typedef struct{
 //        + SCALEMIN;
 //    }
 //}
-
-int hallValue(port){
-    int val = sensorValue[port];

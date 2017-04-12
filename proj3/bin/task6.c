@@ -9,9 +9,7 @@ task main(){
 		location ALV;
 		ALV.x = 0;
 		ALV.y = 0;
-		ALV.heading = 0;
-		ALV.errorCode = 1;
-		ALV = LSTS(ALV);
+		LSTS(ALV);
     displayString(1, "(%f, %f)", ALV.x, ALV.y);
     displayString(2, "Error Code: %i", ALV.errorCode);
     if (ALV.errorThreatLevelMidnight == '$') {

@@ -6,16 +6,16 @@
     //variable 1
     //variable 2
     //variable n
-#define HEIGHT = 80 // mm
+#define HEIGHT 80 // mm
 
-location LSTS(location ALV) {
-    prevX = ALV.x
-    prevY = ALV.y
+void LSTS(location *ALV) {
+    float prevX = ALV->x;
+    float prevY = ALV->y;
 
-    wait1msec[500]; //doc said to wait
+    //wait1msec[500]; //doc said to wait
 
     sendMessage(HEIGHT); // nMessageID is height off ground in mm
-    wait1msec[3000];
+    wait1Msec(3000);
 
     /* Error Codes
     * 1  No error
@@ -26,20 +26,20 @@ location LSTS(location ALV) {
     * 32 Busy - request again later
     */
 
-    ALV.errorCode = messageParm[0];
-    ALV.x = messageParm[1];
-    ALV.y = messageParm[2];
-		if (ALV.errorCode > 3) {
-    		ALV.errorThreatLevelMidnight = '!';
+    ALV->errorCode = messageParm[0];
+    ALV->x = messageParm[1];
+    ALV->y = messageParm[2];
+		if (ALV->errorCode > 3) {
+    		ALV->errorThreatLevelMidnight = '!';
     } else {
-    		ALV.errorThreatLevelMidnight = '$';
+    		ALV->errorThreatLevelMidnight = '$';
     }
-    ALV.heading = atan((prevy - ALV.y) / (prevX - ALV.x));
+    ALV->heading = atan((prevY - ALV->y) / (prevX - ALV->x));
 
     ClearMessage();
 
-    if (ALV.errorThreatLevelMidnight == '!') {
-    		ALV = LSTS();
-    }
-    return ALV;
+    if (ALV->errorThreatLevelMidnight == '!') {
+    		LSTS(ALV);
+}
+    return; //ALV;
 }

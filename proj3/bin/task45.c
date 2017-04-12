@@ -6,7 +6,7 @@
 #include "../lib/motion.h"
 #include "../lib/data.h"
 #include "../lib/sensor.h"
-#include "../lib/bin.h"
+#include "../lib/antenna.h"
 
 task main(){
 		//move forward 0.45m
@@ -18,7 +18,7 @@ task main(){
     //stop
 
     //turn 90deg clockwise
-    zeroRight(90, 30);
+    zeroLeft(90, 30);
 
     wait1Msec(500);
     motor[motorA] = 0;
@@ -32,7 +32,7 @@ task main(){
     motor[motorB] = 0;
 
     //begin a moving turn radius 0.15m 90deg
-    movingLeft(150, 90, 30);
+    movingLeft(150, 145, 30);
 
     wait1Msec(500);
     motor[motorA] = 0;
@@ -46,9 +46,9 @@ task main(){
     motor[motorB] = 0;
 
     //begin polling hall sensor
-		while (hallEffect() < 95) {
-			  motor[motorA] = 50 - (hallEffect() / 2);
-			  motor[motorB] = 50 - (hallEffect() / 2);
+		while (hallSensor() < 95) {
+			  motor[motorA] = 20 //- (hallSensor() / 2);
+			  motor[motorB] = 20 //- (hallSensor() / 2);
 		}
 
 		motor[motorA] = 0;

@@ -7,9 +7,9 @@
 
 task main(){
     //begin polling hall sensor
-		while (hallEffect() < 95) {
-			  motor[motorA] = 50 - (hallEffect() / 2);
-			  motor[motorB] = 50 - (hallEffect() / 2);
+		while (hallSensor() < 95) {
+			  motor[motorA] = 20 //- (hallSensor() / 2);
+			  motor[motorB] = 20 //- (hallSensor() / 2);
 		}
 
 		motor[motorA] = 0;
