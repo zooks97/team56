@@ -5,10 +5,10 @@
 #define SCALEMIN 0.0
 
 typedef struct{
-    float x = 0;
-    float y = 0;
-    float heading = 0;
-    int errorCode = 0;
+    float x;
+    float y ;
+    float heading;
+    int errorCode;
     char errorThreatLevelMidnight;
 } location;
 

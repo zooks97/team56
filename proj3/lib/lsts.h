@@ -1,12 +1,10 @@
 /**** TEAM 56 ****/
 // LSTS SYSTEM //
 #include "data.h"
-#include <math.h>
 
 #define HEIGHT 80 // mm
 
-location lsts(location currLoc){
-    location newLoc;
+void LSTS(location currLoc, location* newLoc){
     word msg;
 
 	wait1Msec(1000);
@@ -30,16 +28,16 @@ location lsts(location currLoc){
 		wait1Msec(1000);
 	}
 
-	newLoc.errorCode = messageParm[0];
-	newLoc.x = messageParm[1];
-	newLoc.y = messageParm[2];
-	newLoc.heading = atan((currLoc.y - newLoc.y) / (currLoc.x - newLoc.x));
+	newLoc->errorCode = messageParm[0];
+	newLoc->x = messageParm[1];
+	newLoc->y = messageParm[2];
+	newLoc->heading = atan((currLoc.y - newLoc->y) / (currLoc.x - newLoc->x));
 
-	displayCenteredTextLine(0, "X: %d", newLoc.x);
-	displayCenteredTextLine(1, "Y: %d", newLoc.y);
-    displayCenteredTextLine(2, "Error Code: %d", errorCode);
+	displayCenteredTextLine(0, "X: %d", newLoc->x);
+	displayCenteredTextLine(1, "Y: %d", newLoc->y);
+    displayCenteredTextLine(2, "Error Code: %d", newLoc->errorCode);
 
-	switch(err){
+	switch(newLoc->errorCode){
 		case 1:
 			displayCenteredTextLine(3, "No error.");
 			break;
@@ -78,8 +76,6 @@ location lsts(location currLoc){
 		wait1Msec(1000);
         ClearMessage();
     }
-
-    return newLoc;
 }
 
 //void LSTS(location *ALV) {
