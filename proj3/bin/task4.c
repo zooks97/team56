@@ -8,8 +8,8 @@
 task main(){
     //begin polling hall sensor
 		while (hallSensor() < 95) {
-			  motor[motorA] = 20 //- (hallSensor() / 2);
-			  motor[motorB] = 20 //- (hallSensor() / 2);
+			  motor[motorA] = 20; //- (hallSensor() / 2);
+			  motor[motorB] = 20; //- (hallSensor() / 2);
 		}
 
 		motor[motorA] = 0;
@@ -18,11 +18,11 @@ task main(){
 
 		forward(5, 10);
 
-		playImmediateTone(440, 2);
+		playImmediateTone(4400, 2);
 		wait1Msec(200);
-		playImmediateTone(440, 2);
+		playImmediateTone(4400, 2);
 		wait1Msec(200);
-		playImmediateTone(440, 2);
+		playImmediateTone(4400, 2);
 		wait1Msec(200);
 
     return;

@@ -25,14 +25,14 @@ task main(){
     motor[motorB] = 0;
 
     //move forward 0.20m
-    forward(200, 30);
+    forward(140, 30);
 
     wait1Msec(500);
     motor[motorA] = 0;
     motor[motorB] = 0;
 
     //begin a moving turn radius 0.15m 90deg
-    movingLeft(150, 145, 30);
+    movingLeft(150, 155, 30);
 
     wait1Msec(500);
     motor[motorA] = 0;
@@ -45,17 +45,18 @@ task main(){
     motor[motorA] = 0;
     motor[motorB] = 0;
 
+
     //begin polling hall sensor
 		while (hallSensor() < 95) {
-			  motor[motorA] = 20 //- (hallSensor() / 2);
-			  motor[motorB] = 20 //- (hallSensor() / 2);
+			  motor[motorA] = 10; //- (hallSensor() / 2);
+			  motor[motorB] = 10; //- (hallSensor() / 2);
 		}
 
 		motor[motorA] = 0;
 		motor[motorB] = 0;
 		wait1Msec(500);
 
-		forward(5, 10);
+		forward(5, 20);
 
 		playImmediateTone(440, 2);
 		wait1Msec(200);
@@ -64,6 +65,7 @@ task main(){
 		playImmediateTone(440, 2);
 		wait1Msec(200);
 
+		backward(50,30);
 		drop();
 		backward(5, 10);
 
