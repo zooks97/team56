@@ -8,5 +8,13 @@
 #include "../lib/sensor.h"
 
 task main(){
-
+    location currLoc;
+    location newLoc
+    currLoc.x = 0;
+    currLoc.y = 0;
+    
+    LSTS(currLoc, *newLoc);
+    forward(10, 30);
+    
+    LSTS(currLoc, *newLoc);
 }

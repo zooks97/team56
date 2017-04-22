@@ -31,7 +31,26 @@ void LSTS(location currLoc, location* newLoc){
 	newLoc->errorCode = messageParm[0];
 	newLoc->x = messageParm[1];
 	newLoc->y = messageParm[2];
-	newLoc->heading = atan((currLoc.y - newLoc->y) / (currLoc.x - newLoc->x));
+	float dx = (newLoc->x - currLoc.x);
+    if (dx > 0) {
+        newLoc->heading = atand((newLoc->y - currLoc.y) / (newLoc->x - currLoc.x));
+    } else {
+        newLoc->heading = atand((newLoc->y - currLoc.y) / (currLoc.x - newLoc->x));
+        float dy = newLoc->y - currLoc.y;
+        if (dy > 0) {
+            newLoc->heading = 180 - newLoc->heading;
+        } else {
+            newLoc->heading = -180 - newLoc->heading;
+        }
+    }
+    if (newLoc->heading < 0) {
+        newLoc->heading += 360;
+    }
+    
+    
+    
+    
+    
 
 	displayCenteredTextLine(0, "X: %d", newLoc->x);
 	displayCenteredTextLine(1, "Y: %d", newLoc->y);

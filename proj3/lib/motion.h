@@ -16,6 +16,8 @@
 #define RRBT           85.0 //mm
 #define DEGMM       1 //(4.3/3.0) //degrees per mm
 
+void turnToAngle(float currAngle, float desAngle);
+
 void forward(float dist, float pow);
 void backward(float dist, float pow);
 
@@ -26,6 +28,26 @@ void movingLeft(float radius, float angle, float pow);
 void movingRight(float radius, float angle, float pow);
 
 //move straight for dist mm
+
+void turnToAngle(float currAngle, float desAngle) {
+    dAngle = currAngle - desAngle;
+    if ((dAngle <= 180) && (dAngle > 0)) {
+        zeroRight(dAngle, 30);
+    } else if (dAngle > 180) {
+        zeroLeft((360 - dAngle), 30);
+    } else if (dAngle > -180) {
+        zeroLeft(fabs(dAngle), 30);
+    } else {
+        zeroRight((360 + dAngle), 30);
+    }
+    
+    return;
+}
+
+
+
+
+
 void forward(float dist, float pow){
     float error;            //error value between motors
     float pGain = 3;        //proportional gain;
