@@ -1,6 +1,7 @@
 #include "../lib/antenna.h"
+#include "../lib/motion.h"
 
 task main()
 {
-    drop();
+    forward(100, 30);//drop();
 }

@@ -30,7 +30,7 @@ void movingRight(float radius, float angle, float pow);
 //move straight for dist mm
 
 void turnToAngle(float currAngle, float desAngle) {
-    dAngle = currAngle - desAngle;
+    float dAngle = currAngle - desAngle;
     if ((dAngle <= 180) && (dAngle > 0)) {
         zeroRight(dAngle, 30);
     } else if (dAngle > 180) {
@@ -40,7 +40,7 @@ void turnToAngle(float currAngle, float desAngle) {
     } else {
         zeroRight((360 + dAngle), 30);
     }
-    
+
     return;
 }
 
