@@ -1,5 +1,6 @@
 #include "../lib/lsts.h"
 #include "../lib/data.h"
+#include "../lib/droppo.h"
 
 #define POWSLOW 30
 #define POWMID 50
@@ -13,21 +14,23 @@ task main() {
     location C;
     float temp;
     
-    A.x = 55;
-    A.y = 220;
-    B.x = 250;
-    B.y = 162;
-    C.x = 298;
-    C.y = 70;
+    A.x = 34;
+    A.y = 205;
+    B.x = 229;
+    B.y = 147;
+    C.x = 277;
+    C.y = 55;
 
-    loc1.x = 0;
-    loc1.y = 0;
-
-    LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
-    wait1Msec(15000);
+    loc2.x = 0;
+    loc2.y = 0;
+    
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc2, &loc1);
-   
+    // FILL ME IN WHEN YOU FIND OUT AT THE DEMO
+    loc1.heading = 
+    
    // Turn towards A
     if (loc1.x < A.x) { // if on left of A site
         turnToAngle(loc1.heading, 0);
@@ -39,11 +42,16 @@ task main() {
         zeroRight(90, POWSLOW);
     }
     
+    // Drive to 5cm away from A
     forward((A.y - loc1.y - 5), POWFAST);
     
     // FIXME: hallsweep funciton and bin drop //
     //move away  from bin make sure to be far enough to allow for a zeroturn
+    droppo();
     
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
@@ -54,6 +62,9 @@ task main() {
     // move forward to be right above B
     forward((B.x - loc1.x), POWFAST);
     // Check heading
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
@@ -65,11 +76,36 @@ task main() {
         zeroRight((90 + temp), POWSLOW);
     } else {
         zeroRight((temp - 90), POWSLOW);
+        // I'm not sure that this is what I want
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     forward((sqrt(pow((B.x - loc1.x), 2.0) + pow((B.y - loc1.y), 2.0))) - 5, POWMID);
     
     // FIXME hallsweep to drop to move away
+    droppo();
     
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
@@ -78,12 +114,15 @@ task main() {
     //Turn to right
     turnToAngle(loc1.heading, 0);
     // go forward past obstacle
-    forward((340 - loc1.x), POWMID);
+    forward((319 - loc1.x), POWMID);
     
     zeroRight(90, POWSLOW);
     forward((loc1.y - C.y), POWMID);
     
     // Check location
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
@@ -95,12 +134,33 @@ task main() {
         zeroRight((90 + temp), POWSLOW);
     } else {
         zeroRight((temp - 90), POWSLOW);
+        // Still not sure that this logic is right
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     forward((sqrt(pow((C.x - loc1.x), 2.0) + pow((C.y - loc1.y), 2.0))) - 5, POWMID);
     
     // FIXME sweep to drop to move away
+    droppo();
     
     // Check location
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
@@ -108,14 +168,42 @@ task main() {
     
     // Face downward
     turnToAngle(loc1.heading, 270);
-    forward((loc1.y - 40), POWMID);
+    forward((loc1.y - 25), POWMID);
     
     // Face left
     zeroRight(90, POWSLOW);
-    forward((loc1.x - 240), POWMID);
+    forward((loc1.x - 179), POWMID);
+    // Check me ^
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //Home in on the base
     // Check location
+    nMotor[motorA] = 0;
+    nmotor[motorB] = 0;
+    playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(10, POWSLOW);
     wait1Msec(15000);
