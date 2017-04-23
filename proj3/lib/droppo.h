@@ -1,7 +1,9 @@
 /**** TEAM 56 ****/
-// LSTS SYSTEM //
+// DROPOFF SYSTEM //
 #include "lsts.h"
 #include "antenna.h"
+
+void droppo();
 
 void droppo() {
     // While you're far away from the magnet, drive slowly forward
@@ -16,12 +18,12 @@ void droppo() {
     wait1Msec(500);
 
     // Crawl forward
-    forward(10, 10);
+    forward(100, 10);
     
-    drop()
+    drop();
     
     // Move away
-    forward(10, 20);
+    forward(100, 20);
     
     return;
 }

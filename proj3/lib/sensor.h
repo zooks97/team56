@@ -8,9 +8,11 @@
 short hallSensor();
 
 short hallSensor(){
-    if (SensorValue[HALLPORT1] > SensorValue[HALLPORT2]) {
-        return (((SensorValue[HALLPORT1] - HALLMIN) / (HALLMAX - HALLMIN)) * 100);
+    short sens1 = SensorValue[HALLPORT1];
+    short sens2 = SensorValue[HALLPORT2] / 10;
+    if (sens1 > sens2) {
+        return (((sens1 - HALLMIN) / (HALLMAX - HALLMIN)) * 100);
     } else {
-        return (((SensorValue[HALLPORT2] - HALLMIN) / (HALLMAX - HALLMIN)) * 100);
+        return (((sens2 - HALLMIN) / (HALLMAX - HALLMIN)) * 100);
     }
 }

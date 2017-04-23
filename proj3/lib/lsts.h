@@ -4,7 +4,9 @@
 
 #define HEIGHT 80 // mm
 
-void LSTS(location currLoc, location* newLoc){
+void LSTS(location currLoc, location *newLoc);
+
+void LSTS(location currLoc, location *newLoc){
     word msg;
 
 	wait1Msec(1000);
@@ -29,8 +31,8 @@ void LSTS(location currLoc, location* newLoc){
 	}
 
 	newLoc->errorCode = messageParm[0];
-	newLoc->x = messageParm[1] / 10; // Convert to cm
-	newLoc->y = messageParm[2] / 10; // Convert to cm
+	newLoc->x = messageParm[1];
+	newLoc->y = messageParm[2];
 	float dx = (newLoc->x - currLoc.x);
     if (dx > 0) {
         newLoc->heading = atand((newLoc->y - currLoc.y) / (newLoc->x - currLoc.x));
@@ -47,11 +49,6 @@ void LSTS(location currLoc, location* newLoc){
         newLoc->heading += 360;
     }
     
-    
-    
-    
-    
-
 	displayCenteredTextLine(0, "X: %d", newLoc->x);
 	displayCenteredTextLine(1, "Y: %d", newLoc->y);
     displayCenteredTextLine(2, "Error Code: %d", newLoc->errorCode);

@@ -1,5 +1,4 @@
 #include "../lib/lsts.h"
-//#include "../lib/data.h"
 #include "../lib/droppo.h"
 #include "../lib/motion.h"
 
@@ -16,14 +15,14 @@ task main() {
     location home;
     float temp;
 
-    A.x = 34;
-    A.y = 205;
-    B.x = 229;
-    B.y = 147;
-    C.x = 277;
-    C.y = 55;
-    home.x = 40;
-    home.y = 60;
+    A.x = 340;
+    A.y = 2050;
+    B.x = 2290;
+    B.y = 1470;
+    C.x = 2770;
+    C.y = 550;
+    home.x = 400;
+    home.y = 600;
 
     loc2.x = 0;
     loc2.y = 0;
@@ -47,17 +46,15 @@ task main() {
     }
 
     // Drive to 5cm away from A
-    forward((A.y - loc1.y - 5), POWFAST);
+    forward((A.y - loc1.y - 50), POWFAST);
 
-    // FIXME: hallsweep funciton and bin drop //
-    //move away  from bin make sure to be far enough to allow for a zeroturn
     droppo();
 
     motor[motorA] = 0;
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
@@ -70,55 +67,33 @@ task main() {
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
     //turn to face B
-    temp = atand(fabs(B.x - loc1.x) / fabs(B.y - loc1.y));
+    temp = atan(fabs(B.x - loc1.x) / fabs(B.y - loc1.y)) / PI * 180;
     if (loc1.x > B.x) {
         zeroRight((90 + temp), POWSLOW);
     } else {
         zeroRight((temp - 90), POWSLOW);
-        // I'm not sure that this is what I want
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-    forward((sqrt(pow((B.x - loc1.x), 2.0) + pow((B.y - loc1.y), 2.0))) - 5, POWMID);
+    forward((sqrt(pow((B.x - loc1.x), 2.0) + pow((B.y - loc1.y), 2.0))) - 50, POWMID);
 
-    // FIXME hallsweep to drop to move away
     droppo();
 
     motor[motorA] = 0;
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
     //Turn to right
     turnToAngle(loc1.heading, 0);
     // go forward past obstacle
-    forward((319 - loc1.x), POWMID);
+    forward((3190 - loc1.x), POWMID);
 
     zeroRight(90, POWSLOW);
     forward((loc1.y - C.y), POWMID);
@@ -128,37 +103,19 @@ task main() {
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
     // Go towards C
-    temp = atand(fabs(C.y - loc1.y) / fabs(C.x - loc1.x));
+    temp = atan(fabs(C.y - loc1.y) / fabs(C.x - loc1.x)) / PI * 180;
     if (loc1.y < C.y) {
         zeroRight((90 + temp), POWSLOW);
     } else {
         zeroRight((temp - 90), POWSLOW);
-        // Still not sure that this logic is right
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     forward((sqrt(pow((C.x - loc1.x), 2.0) + pow((C.y - loc1.y), 2.0))) - 5, POWMID);
 
-    // FIXME sweep to drop to move away
     droppo();
 
     // Check location
@@ -166,42 +123,17 @@ task main() {
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
     // Face downward
     turnToAngle(loc1.heading, 270);
-    forward((loc1.y - 25), POWMID);
+    forward((loc1.y - 2500), POWMID);
 
     // Face left
     zeroRight(90, POWSLOW);
-    forward((loc1.x - 179), POWMID);
-    // Check me ^
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    forward((loc1.x - 1790), POWMID);
 
     //Home in on the base
     // Check location
@@ -209,12 +141,12 @@ task main() {
     motor[motorB] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
-    forward(10, POWSLOW);
+    forward(100, POWSLOW);
     wait1Msec(15000);
     LSTS(loc2, &loc1);
 
     // Go towards home
-    temp = atand(fabs(home.y - loc1.y) / fabs(home.x - loc1.x));
+    temp = atan(fabs(home.y - loc1.y) / fabs(home.x - loc1.x)) / PI * 180;
     zeroRight(temp, POWSLOW);
     forward((sqrt(pow((home.x - loc1.x), 2.0) + pow((home.y - loc1.y), 2.0))), POWFAST);
 

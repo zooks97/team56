@@ -44,14 +44,10 @@ void turnToAngle(float currAngle, float desAngle) {
     return;
 }
 
-
-
-
-
 void forward(float dist, float pow){
     float error;            //error value between motors
     float pGain = 3;        //proportional gain;
-    int deg = dist * 360 / (2 * PI * RWHL);
+    int deg = dist * 360 / (2 * PI * RWHL) * 10;
 
     //zero the motor encoders
     nMotorEncoder[motorA] = 0;
@@ -127,6 +123,7 @@ void zeroLeft(float angle, float pow){
 
     motor[motorA] = 0;
     motor[motorB] = 0;
+    
     return;
 }
 
