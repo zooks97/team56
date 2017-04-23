@@ -17,14 +17,10 @@ void droppo() {
     motor[motorB] = 0;
     motor[motorC] = 0;
     wait1Msec(1000);
-
-    // Crawl forward
-    forward(100, 20);
-
+    
+    forward(100, 20); /*crawl forward*/
     drop();
-
-    // Move away
-    forward(100, 20);
+    forward(100, 20); /*move away*/
 
     return;
 }

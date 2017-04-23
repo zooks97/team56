@@ -13,21 +13,15 @@
 */
 
 #define RWHL          40.8 //mm
-#define RRBT           85.0 //mm
-#define DEGMM       1 //(4.3/3.0) //degrees per mm
+#define RRBT          85.0 //mm
 
 void turnToAngle(float currAngle, float desAngle);
-
 void forward(float dist, float pow);
-//void backward(float dist, float pow);
-
 void zeroLeft(float angle, float pow);
 void zeroRight(float angle, float pow);
-
+//void backward(float dist, float pow);
 //void movingLeft(float radius, float angle, float pow);
 //void movingRight(float radius, float angle, float pow);
-
-//move straight for dist mm
 
 void turnToAngle(float currAngle, float desAngle) {
     float dAngle = currAngle - desAngle;
@@ -67,6 +61,42 @@ void forward(float dist, float pow){
     }
     motor[motorB] = 0;
     motor[motorC] = 0;
+    return;
+}
+
+void zeroLeft(float angle, float pow){
+    nMotorEncoder[motorB] = 0;
+    nMotorEncoder[motorC] = 0;
+
+    nMotorEncoderTarget[motorC] = RRBT / RWHL * angle;
+    nMotorEncoderTarget[motorB] = -RRBT / RWHL * angle;
+
+    motor[motorB] = pow;
+    motor[motorC] = -pow;
+
+    while(nMotorRunState[motorC] != runStateIdle){}
+
+    motor[motorB] = 0;
+    motor[motorC] = 0;
+
+    return;
+}
+
+void zeroRight(float angle, float pow){
+    nMotorEncoder[motorB] = 0;
+    nMotorEncoder[motorC] = 0;
+
+    nMotorEncoderTarget[motorB] = RRBT / RWHL * angle;
+    nMotorEncoderTarget[motorC] = -RRBT / RWHL * angle;
+
+    motor[motorC] = pow;
+    motor[motorB] = -pow;
+
+    while(nMotorRunState[motorB] != runStateIdle){}
+
+    motor[motorB] = 0;
+    motor[motorC] = 0;
+
     return;
 }
 
@@ -126,42 +156,6 @@ void forward(float dist, float pow){
 
 //    return;
 //}
-
-void zeroLeft(float angle, float pow){
-    nMotorEncoder[motorB] = 0;
-    nMotorEncoder[motorC] = 0;
-
-    nMotorEncoderTarget[motorC] = RRBT / RWHL * angle;
-    nMotorEncoderTarget[motorB] = -RRBT / RWHL * angle;
-
-    motor[motorB] = pow;
-    motor[motorC] = -pow;
-
-    while(nMotorRunState[motorC] != runStateIdle){}
-
-    motor[motorB] = 0;
-    motor[motorC] = 0;
-
-    return;
-}
-
-void zeroRight(float angle, float pow){
-    nMotorEncoder[motorB] = 0;
-    nMotorEncoder[motorC] = 0;
-
-    nMotorEncoderTarget[motorB] = RRBT / RWHL * angle;
-    nMotorEncoderTarget[motorC] = -RRBT / RWHL * angle;
-
-    motor[motorC] = pow;
-    motor[motorB] = -pow;
-
-    while(nMotorRunState[motorB] != runStateIdle){}
-
-    motor[motorB] = 0;
-    motor[motorC] = 0;
-
-    return;
-}
 
 //void zeroRight(float angle, float pow){
 //    //float error;

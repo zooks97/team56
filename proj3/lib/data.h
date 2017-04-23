@@ -6,5 +6,4 @@ typedef struct{
     float y ;
     float heading;
     int errorCode;
-    //char errorThreatLevelMidnight;
 } location;
