@@ -2,9 +2,9 @@
 #include "../lib/droppo.h"
 #include "../lib/motion.h"
 
-#define POWSLOW 30
-#define POWMID 50
-#define POWFAST 70
+#define POWSLOW 10
+#define POWMID 20
+#define POWFAST 30
 
 task main() {
     location loc1;
@@ -43,12 +43,12 @@ task main() {
         turnToAngle(loc1.heading, 0);
         forward(fabs(loc1.x - A.x), POWSLOW);
         zeroLeft(91, POWSLOW);
-        
+
     } else { // if on right of A site
         turnToAngle(loc1.heading, 180);
         forward(fabs(loc1.x - A.x), POWSLOW);
         zeroRight(91, POWSLOW);
-        
+
     }
 
     // Drive to A
@@ -76,7 +76,7 @@ task main() {
     zeroRight(91, POWSLOW);
     //go near C
     forward(3140 - C.x);
-    
+
 
     //turn to south
     zeroLeft(91, POWSLOW);
@@ -90,7 +90,7 @@ task main() {
     zeroRight(91, POWSLOW);
     //slide into the dms
     forward(150, POWSLOW - 15);
-    
+
 
     motor[motorA] = 0;
     motor[motorB] = 0;

@@ -2,9 +2,9 @@
 #include "../lib/droppo.h"
 #include "../lib/motion.h"
 
-#define POWSLOW 30
-#define POWMID 50
-#define POWFAST 70
+#define POWSLOW 10
+#define POWMID 20
+#define POWFAST 30
 #define INITHEAD 90
 #define RIGHTANGLE 91
 
@@ -43,7 +43,7 @@ task main() {
     loc1.heading = INITHEAD;
     // loc1.x = 430;
     // loc1.y = 470;
-   
+
     // Turn towards A
     if (loc1.x < A.x) { // if on left of A site
         turnToAngle(loc1.heading, 0);

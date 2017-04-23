@@ -2,9 +2,9 @@
 #include "../lib/droppo.h"
 #include "../lib/motion.h"
 
-#define POWSLOW 30
-#define POWMID 50
-#define POWFAST 70
+#define POWSLOW 10
+#define POWMID 20
+#define POWFAST 30
 
 task main() {
     location loc1;
