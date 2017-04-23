@@ -4,18 +4,18 @@
 void drop();
 
 void drop(){
-    nMotorEncoder[motorC] = 0;
-    motor[motorC] = 0;
-    nMotorEncoderTarget[motorC] = -20;
-    motor[motorC] = -50;
-    while(nMotorRunState[motorC] != runStateIdle){}
-    motor[motorC] = 0;
+    nMotorEncoder[motorA] = 0;
+    motor[motorA] = 0;
+    nMotorEncoderTarget[motorA] = -20;
+    motor[motorA] = -50;
+    while(nMotorRunState[motorA] != runStateIdle){}
+    motor[motorA] = 0;
     wait1Msec(100);
 
-    nMotorEncoderTarget[motorC] = 40;
-    motor[motorC] = 10;
-    while(nMotorRunState[motorC] != runStateIdle){}
-    motor[motorC] = 0;
+    nMotorEncoderTarget[motorA] = 40;
+    motor[motorA] = 10;
+    while(nMotorRunState[motorA] != runStateIdle){}
+    motor[motorA] = 0;
     wait1Msec(500);
 
     return;

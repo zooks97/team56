@@ -35,9 +35,9 @@ void LSTS(location currLoc, location *newLoc){
 	newLoc->y = messageParm[2];
 	float dx = (newLoc->x - currLoc.x);
     if (dx > 0) {
-        newLoc->heading = atand((newLoc->y - currLoc.y) / (newLoc->x - currLoc.x));
+        newLoc->heading = atan((newLoc->y - currLoc.y) / (newLoc->x - currLoc.x)) / PI * 180;
     } else {
-        newLoc->heading = atand((newLoc->y - currLoc.y) / (currLoc.x - newLoc->x));
+        newLoc->heading = atan((newLoc->y - currLoc.y) / (currLoc.x - newLoc->x)) / PI * 180;
         float dy = newLoc->y - currLoc.y;
         if (dy > 0) {
             newLoc->heading = 180 - newLoc->heading;
@@ -48,7 +48,7 @@ void LSTS(location currLoc, location *newLoc){
     if (newLoc->heading < 0) {
         newLoc->heading += 360;
     }
-    
+
 	displayCenteredTextLine(0, "X: %d", newLoc->x);
 	displayCenteredTextLine(1, "Y: %d", newLoc->y);
     displayCenteredTextLine(2, "Error Code: %d", newLoc->errorCode);

@@ -17,7 +17,7 @@ task main() {
 
     A.x = 340;
     A.y = 2050;
-    B.x = 2290;
+    B.x = 2291;
     B.y = 1470;
     C.x = 2770;
     C.y = 550;
@@ -41,58 +41,75 @@ task main() {
    // Turn towards A
     if (loc1.x < A.x) { // if on left of A site
         turnToAngle(loc1.heading, 0);
+        wait1Msec(500);
         forward(fabs(loc1.x - A.x), POWSLOW);
-        zeroLeft(90, POWSLOW);
+        wait1Msec(500);
+        zeroLeft(91, POWSLOW);
+        wait1Msec(500);
     } else { // if on right of A site
         turnToAngle(loc1.heading, 180);
+        wait1Msec(500);
         forward(fabs(loc1.x - A.x), POWSLOW);
-        zeroRight(90, POWSLOW);
+        wait1Msec(500);
+        zeroRight(91, POWSLOW);
+        wait1Msec(500);
     }
 
-    // Drive to 5cm away from A
-    forward((A.y - loc1.y - 50), POWFAST);
-    //drop at A
-    droppo();
+    // Drive to A
+    forward((A.y - loc1.y), POWFAST);
+    wait1Msec(500);
 
-    /*facing 90, 20cm north of A*/
-    zeroRight(90, POWSLOW);
+    /*facing 91, 20cm north of A*/
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
 
     // move forward to be right above B
     forward((B.x - A.x), POWFAST);
+    wait1Msec(500);
     //face B
-    zeroRight(90, POWSLOW);
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
     //go to B
-    forward((A.y + droppoOffset) - B.y - 50, POWMID);
-    //drop at B
-    droppo();
+    forward(A.y - B.y, POWMID);
+    wait1Msec(500);
 
     //Turn left
-    zeroLeft(90, POWSLOW);
+    zeroLeft(91, POWSLOW);
+    wait1Msec(500);
     // go forward past obstacle
     forward(3140 - B.x);
+    wait1Msec(500);
     //turn to face south
-    zeroRight(90, POWSLOW);
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
     //move down to C.y
-    forward((B.y - droppoOffset - C.y), POWMID);
+    forward((B.y - C.y), POWMID);
+    wait1Msec(500);
     //turn towards C
-    zeroRight(90, POWSLOW);
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
     //go near C
-    forward(3140 - C.x - 50);
-    //drop at C
-    droppo();
+    forward(3140 - C.x);
+    wait1Msec(500);
 
     //turn to south
-    zeroLeft(90, POWSLOW);
+    zeroLeft(91, POWSLOW);
+    wait1Msec(500);
     //go down to avoid obstacle
     forward(C.y - 250);
+    wait1Msec(500);
     //face west (homeward)
-    zeroRight(90, POWSLOW);
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
     //go to below home
-    forward(C.x - droppoOffset - home.x, POWMID);
+    forward(C.x - home.x, POWMID);
+    wait1Msec(500);
     //turn to north
-    zeroRight(90, POWSLOW);
+    zeroRight(91, POWSLOW);
+    wait1Msec(500);
     //slide into the dms
     forward(150, POWSLOW - 15);
+    wait1Msec(500);
 
     motor[motorA] = 0;
     motor[motorB] = 0;
