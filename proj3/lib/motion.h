@@ -39,28 +39,44 @@ void turnToAngle(float currAngle, float desAngle) {
 }
 
 void forward(float dist, float pow){
-    float error;            //error value between motors
-    float pGain = 3;        //proportional gain;
+    //float error;            //error value between motors
+    //float pGain = 3;        //proportional gain;
     int deg = dist * 360 / (2 * PI * RWHL);
 
     //zero the motor encoders
     nMotorEncoder[motorB] = 0;
     nMotorEncoder[motorC] = 0;
 
-    //checks to see if the motor has travelled the required
-    //number of degrees (rotations)
-    while(nMotorEncoder[motorB] < deg){
-        //error is the difference between how many degrees
-        //each motor has travelled
-        error = nMotorEncoder[motorB] - nMotorEncoder[motorC];
-        //adjust the speed of each motor from the base speed
-        //proportionally to half the error (each motor tries
-        //to correct for half the error
-        motor[motorB] = -(pGain * error / 2) + pow;
-        motor[motorC] = (pGain * error / 2) + pow;
-    }
+    //set targets
+    nMotorEncoderTarget[motorB] = deg;
+    nMotorEncoderTarget[motorC] = deg;
+
+    //start motors
+    motor[motorB] = pow;
+    motor[motorC] = pow;
+
+    //run motors
+    while(nMotorRunState[motorB] != runStateIdle){}
+
+    //stop motors
     motor[motorB] = 0;
     motor[motorC] = 0;
+
+    wait1Msec(500);
+
+    // //checks to see if the motor has travelled the required
+    // //number of degrees (rotations)
+    // while(nMotorEncoder[motorB] < deg){
+    //     //error is the difference between how many degrees
+    //     //each motor has travelled
+    //     error = nMotorEncoder[motorB] - nMotorEncoder[motorC];
+    //     //adjust the speed of each motor from the base speed
+    //     //proportionally to half the error (each motor tries
+    //     //to correct for half the error
+    //     motor[motorB] = -(pGain * error / 2) + pow;
+    //     motor[motorC] = (pGain * error / 2) + pow;
+    // }
+
     return;
 }
 

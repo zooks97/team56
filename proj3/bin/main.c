@@ -27,8 +27,8 @@ task main() {
     loc2.x = 0;
     loc2.y = 0;
 
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc2, &loc1);
     // FILL ME IN WHEN YOU FIND OUT AT THE DEMO
@@ -50,8 +50,8 @@ task main() {
 
     droppo();
 
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -63,8 +63,8 @@ task main() {
     // move forward to be right above B
     forward((B.x - loc1.x), POWFAST);
     // Check heading
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -82,8 +82,8 @@ task main() {
 
     droppo();
 
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -99,8 +99,8 @@ task main() {
     forward((loc1.y - C.y), POWMID);
 
     // Check location
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -119,8 +119,8 @@ task main() {
     droppo();
 
     // Check location
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -137,8 +137,8 @@ task main() {
 
     //Home in on the base
     // Check location
-    motor[motorA] = 0;
     motor[motorB] = 0;
+    motor[motorC] = 0;
     playImmediateTone(4400, 2);
     LSTS(loc1, &loc2);
     forward(100, POWSLOW);
@@ -150,7 +150,7 @@ task main() {
     zeroRight(temp, POWSLOW);
     forward((sqrt(pow((home.x - loc1.x), 2.0) + pow((home.y - loc1.y), 2.0))), POWFAST);
 
-    motor[motorA] = 0;
-    Motor[motorB] = 0;
+    motor[motorB] = 0;
+    Motor[motorC] = 0;
     displayCenteredTextLine(4, "Ay papi");
 }
