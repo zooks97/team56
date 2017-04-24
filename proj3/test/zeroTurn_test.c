@@ -10,7 +10,8 @@
 task main(){
 
     //this works ok, from testing
-    zeroLeft(91, 30);
+    zeroRight(95.2, 30);
+    //zeroLeft(91, 30);
 
     return;
 }

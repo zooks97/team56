@@ -40,8 +40,11 @@ void turnToAngle(float currAngle, float desAngle) {
 
 void forward(float dist, float pow){
     //float error;            //error value between motors
-    //float pGain = 3;        //proportional gain;
+    //float pGain = 0.5;        //proportional gain;
     int deg = dist * 360 / (2 * PI * RWHL);
+
+    nMotorPIDSpeedCtrl[motorB] = mtrSpeedReg;
+    nMotorPIDSpeedCtrl[motorC] = mtrSpeedReg;
 
     //zero the motor encoders
     nMotorEncoder[motorB] = 0;
@@ -52,7 +55,7 @@ void forward(float dist, float pow){
     nMotorEncoderTarget[motorC] = deg;
 
     //start motors
-    motor[motorB] = pow;
+    motor[motorB] = pow + pow / 40;
     motor[motorC] = pow;
 
     //run motors
@@ -62,7 +65,7 @@ void forward(float dist, float pow){
     motor[motorB] = 0;
     motor[motorC] = 0;
 
-    wait1Msec(500);
+    wait1Msec(800);
 
     // //checks to see if the motor has travelled the required
     // //number of degrees (rotations)
@@ -80,7 +83,7 @@ void forward(float dist, float pow){
     return;
 }
 
-void zeroLeft(float angle, float pow){
+void zeroRight(float angle, float pow){
     nMotorEncoder[motorB] = 0;
     nMotorEncoder[motorC] = 0;
 
@@ -95,10 +98,12 @@ void zeroLeft(float angle, float pow){
     motor[motorB] = 0;
     motor[motorC] = 0;
 
+    wait1Msec(500);
+
     return;
 }
 
-void zeroRight(float angle, float pow){
+void zeroLeft(float angle, float pow){
     nMotorEncoder[motorB] = 0;
     nMotorEncoder[motorC] = 0;
 
@@ -112,6 +117,8 @@ void zeroRight(float angle, float pow){
 
     motor[motorB] = 0;
     motor[motorC] = 0;
+
+    wait1Msec(500);
 
     return;
 }

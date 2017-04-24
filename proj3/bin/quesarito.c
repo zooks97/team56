@@ -5,6 +5,7 @@
 #define POWSLOW 10
 #define POWMID 20
 #define POWFAST 30
+#define RIGHTANGLE 96
 
 task main() {
     location loc1;
@@ -17,7 +18,7 @@ task main() {
 
     A.x = 340;
     A.y = 2050;
-    B.x = 2291;
+    B.x = 2290;
     B.y = 1470;
     C.x = 2770;
     C.y = 550;
@@ -40,59 +41,84 @@ task main() {
     loc1.y = 470;
    // Turn towards A
     if (loc1.x < A.x) { // if on left of A site
-        turnToAngle(loc1.heading, 0);
-        forward(fabs(loc1.x - A.x), POWSLOW);
-        zeroLeft(91, POWSLOW);
+        //turnToAngle(loc1.heading, 0);
+        zeroRight(90, POWMID);
+        forward(fabs(loc1.x - A.x + 10), POWMID);
+        zeroLeft(RIGHTANGLE, POWMID);
 
     } else { // if on right of A site
-        turnToAngle(loc1.heading, 180);
-        forward(fabs(loc1.x - A.x), POWSLOW);
-        zeroRight(91, POWSLOW);
+        //turnToAngle(loc1.heading, 180);
+        zeroLeft(90, POWMID);
+        forward(fabs(loc1.x - A.x + 10), POWMID);
+        zeroRight(RIGHTANGLE, POWMID);
 
     }
 
     // Drive to A
     forward((A.y - loc1.y), POWFAST);
 
+    motor[motorB] = 0;
+    motor[motorA] = 0;
+    wait1Msec(500);
+
     /*facing 91, 20cm north of A*/
-    zeroRight(91, POWSLOW);
+    zeroRight(RIGHTANGLE , POWMID);
 
     // move forward to be right above B
     forward((B.x - A.x), POWFAST);
     //face B
-    zeroRight(91, POWSLOW);
+    zeroRight(RIGHTANGLE, POWMID);
     //go to B
-    forward(A.y - B.y, POWMID);
+    forward(A.y - B.y + 100, POWMID);
+
+    motor[motorB] = 0;
+    motor[motorA] = 0;
+    wait1Msec(500);
 
     //Turn left
-    zeroLeft(91, POWSLOW);
+    zeroLeft(RIGHTANGLE , POWMID);
     // go forward past obstacle
-    forward(3140 - B.x);
+    forward(3070 - B.x, POWFAST);
+
+    motor[motorB] = 0;
+    motor[motorA] = 0;
+    wait1Msec(500);
+
     //turn to face south
-    zeroRight(91, POWSLOW);
+    zeroRight(RIGHTANGLE + 5 , POWMID);
     //move down to C.y
     forward((B.y - C.y), POWMID);
-    //turn towards C
-    zeroRight(91, POWSLOW);
-    //go near C
-    forward(3140 - C.x);
 
+    motor[motorB] = 0;
+    motor[motorA] = 0;
+    wait1Msec(500);
+
+    //turn towards C
+    zeroRight(RIGHTANGLE , POWMID);
+    //go near C
+    forward(3140 - C.x, POWFAST);
+
+    motor[motorB] = 0;
+    motor[motorA] = 0;
+    wait1Msec(500);
 
     //turn to south
-    zeroLeft(91, POWSLOW);
+    zeroLeft(RIGHTANGLE, POWMID);
     //go down to avoid obstacle
-    forward(C.y - 250);
+    forward(C.y - 250, POWFAST);
     //face west (homeward)
-    zeroRight(91, POWSLOW);
+    zeroRight(RIGHTANGLE, POWMID);
     //go to below home
     forward(C.x - home.x, POWMID);
     //turn to north
-    zeroRight(91, POWSLOW);
+    zeroRight(RIGHTANGLE, POWMID);
     //slide into the dms
-    forward(150, POWSLOW - 15);
+    forward(200, POWMID);
 
 
     motor[motorA] = 0;
     motor[motorB] = 0;
     displayCenteredTextLine(4, "Ay papi");
+
+    return;
 }
