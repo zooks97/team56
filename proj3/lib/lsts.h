@@ -13,7 +13,7 @@ void LSTS(location currLoc, location *newLoc){
 
 	while(bQueuedMsgAvailable()){
 	  	wait1Msec(1000);
-	    ClearMessage();
+	  	ClearMessage();
 	    msg = message;
 	}
 

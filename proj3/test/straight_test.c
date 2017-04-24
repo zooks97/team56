@@ -4,5 +4,8 @@
 #include "../lib/motion.h"
 
 task main(){
-    forward(500, 30);
+    nMotorPIDSpeedCtrl[motorB] = mtrSpeedReg;
+    nMotorPIDSpeedCtrl[motorC] = mtrSpeedReg;
+    wait1Msec(500);
+    forward(300, 30);
 }
